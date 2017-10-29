@@ -31,17 +31,17 @@ class FriendsViewController: UIViewController {
         self.tableView.refreshControl?.addTarget(self,
                                                  action: #selector(self.startReloadTableContents(_:)),
                                                  for: .valueChanged)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didReceiveUpdateFriendListNotification(_:)),
-                                               name: didUpdateFriendListNotification,
-                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(self.didReceiveUpdateFriendListNotification(_:)),
+//                                               name: didUpdateFriendListNotification,
+//                                               object: nil)
         
         loadFriends()
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+//
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
     
     // MARK: Custom Methods
     @objc func startReloadTableContents(_ sender: UIRefreshControl) {
@@ -123,7 +123,9 @@ extension FriendsViewController: UITableViewDataSource {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         
-        cell.nameLabel.text = friend.title.firstUppercased + ". " + friend.firstName + friend.lastName
+        cell.nameLabel.text = friend.title.firstUppercased + ". " +
+                                friend.firstName.firstUppercased + " " +
+                                friend.lastName.firstUppercased
         cell.emailLabel.text = friend.email
         
         return cell
