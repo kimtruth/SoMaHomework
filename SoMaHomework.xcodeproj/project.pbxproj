@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98A5FD211FA5835000EC88F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD201FA5835000EC88F1 /* WebViewController.swift */; };
+		98A5FD231FA5840900EC88F1 /* BestFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */; };
 		98E503731FA57BEA0093A998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503721FA57BEA0093A998 /* AppDelegate.swift */; };
-		98E503751FA57BEA0093A998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503741FA57BEA0093A998 /* ViewController.swift */; };
 		98E503781FA57BEA0093A998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E503761FA57BEA0093A998 /* Main.storyboard */; };
 		98E5037A1FA57BEA0093A998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E503791FA57BEA0093A998 /* Assets.xcassets */; };
 		98E5037D1FA57BEA0093A998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E5037B1FA57BEA0093A998 /* LaunchScreen.storyboard */; };
+		98E503851FA57CF50093A998 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503841FA57CF50093A998 /* FriendsViewController.swift */; };
+		98E503871FA57EA40093A998 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503861FA57EA40093A998 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98A5FD201FA5835000EC88F1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestFriendsViewController.swift; sourceTree = "<group>"; };
 		98E5036F1FA57BEA0093A998 /* SoMaHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoMaHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E503721FA57BEA0093A998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		98E503741FA57BEA0093A998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		98E503771FA57BEA0093A998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98E503791FA57BEA0093A998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98E5037C1FA57BEA0093A998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98E5037E1FA57BEA0093A998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98E503841FA57CF50093A998 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		98E503861FA57EA40093A998 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				98E503721FA57BEA0093A998 /* AppDelegate.swift */,
-				98E503741FA57BEA0093A998 /* ViewController.swift */,
+				98E503841FA57CF50093A998 /* FriendsViewController.swift */,
+				98E503861FA57EA40093A998 /* DetailViewController.swift */,
+				98A5FD201FA5835000EC88F1 /* WebViewController.swift */,
+				98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */,
 				98E503761FA57BEA0093A998 /* Main.storyboard */,
 				98E503791FA57BEA0093A998 /* Assets.xcassets */,
 				98E5037B1FA57BEA0093A998 /* LaunchScreen.storyboard */,
@@ -136,8 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E503751FA57BEA0093A998 /* ViewController.swift in Sources */,
+				98E503871FA57EA40093A998 /* DetailViewController.swift in Sources */,
+				98A5FD231FA5840900EC88F1 /* BestFriendsViewController.swift in Sources */,
+				98E503851FA57CF50093A998 /* FriendsViewController.swift in Sources */,
 				98E503731FA57BEA0093A998 /* AppDelegate.swift in Sources */,
+				98A5FD211FA5835000EC88F1 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z79MDNXYJV;
 				INFOPLIST_FILE = SoMaHomework/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.mikumiku.SoMaHomework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,7 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z79MDNXYJV;
 				INFOPLIST_FILE = SoMaHomework/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.mikumiku.SoMaHomework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
