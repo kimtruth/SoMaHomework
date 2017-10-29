@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1BB56CDA6C0FA17E956B50 /* Pods_SoMaHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C93B9E7B91C63B85D25C86 /* Pods_SoMaHomework.framework */; };
+		9835412F1FA588BB00CDE32E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835412E1FA588BB00CDE32E /* FriendCell.swift */; };
+		983541311FA58C9E00CDE32E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983541301FA58C9E00CDE32E /* Friend.swift */; };
 		98A5FD211FA5835000EC88F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD201FA5835000EC88F1 /* WebViewController.swift */; };
 		98A5FD231FA5840900EC88F1 /* BestFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */; };
 		98E503731FA57BEA0093A998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503721FA57BEA0093A998 /* AppDelegate.swift */; };
@@ -18,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BBCE94E5913AF119027AD90 /* Pods-SoMaHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoMaHomework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoMaHomework/Pods-SoMaHomework.debug.xcconfig"; sourceTree = "<group>"; };
+		623F66A9BCD5B9A668F20A6C /* Pods-SoMaHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoMaHomework.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoMaHomework/Pods-SoMaHomework.release.xcconfig"; sourceTree = "<group>"; };
+		74C93B9E7B91C63B85D25C86 /* Pods_SoMaHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoMaHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9835412E1FA588BB00CDE32E /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		983541301FA58C9E00CDE32E /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		98A5FD201FA5835000EC88F1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestFriendsViewController.swift; sourceTree = "<group>"; };
 		98E5036F1FA57BEA0093A998 /* SoMaHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoMaHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,17 +43,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1BB56CDA6C0FA17E956B50 /* Pods_SoMaHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F6D09E87EF745BB9BF41BBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74C93B9E7B91C63B85D25C86 /* Pods_SoMaHomework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9835412D1FA588A300CDE32E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				98E503841FA57CF50093A998 /* FriendsViewController.swift */,
+				98E503861FA57EA40093A998 /* DetailViewController.swift */,
+				98A5FD201FA5835000EC88F1 /* WebViewController.swift */,
+				98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		98E503661FA57BEA0093A998 = {
 			isa = PBXGroup;
 			children = (
 				98E503711FA57BEA0093A998 /* SoMaHomework */,
 				98E503701FA57BEA0093A998 /* Products */,
+				DC6AD2F0ACB53B979DA0725F /* Pods */,
+				1F6D09E87EF745BB9BF41BBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,16 +91,24 @@
 			isa = PBXGroup;
 			children = (
 				98E503721FA57BEA0093A998 /* AppDelegate.swift */,
-				98E503841FA57CF50093A998 /* FriendsViewController.swift */,
-				98E503861FA57EA40093A998 /* DetailViewController.swift */,
-				98A5FD201FA5835000EC88F1 /* WebViewController.swift */,
-				98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */,
+				9835412E1FA588BB00CDE32E /* FriendCell.swift */,
+				983541301FA58C9E00CDE32E /* Friend.swift */,
+				9835412D1FA588A300CDE32E /* ViewControllers */,
 				98E503761FA57BEA0093A998 /* Main.storyboard */,
 				98E503791FA57BEA0093A998 /* Assets.xcassets */,
 				98E5037B1FA57BEA0093A998 /* LaunchScreen.storyboard */,
 				98E5037E1FA57BEA0093A998 /* Info.plist */,
 			);
 			path = SoMaHomework;
+			sourceTree = "<group>";
+		};
+		DC6AD2F0ACB53B979DA0725F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BBCE94E5913AF119027AD90 /* Pods-SoMaHomework.debug.xcconfig */,
+				623F66A9BCD5B9A668F20A6C /* Pods-SoMaHomework.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +118,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98E503811FA57BEA0093A998 /* Build configuration list for PBXNativeTarget "SoMaHomework" */;
 			buildPhases = (
+				54B2A2A358CB437BC11F147D /* [CP] Check Pods Manifest.lock */,
 				98E5036B1FA57BEA0093A998 /* Sources */,
 				98E5036C1FA57BEA0093A998 /* Frameworks */,
 				98E5036D1FA57BEA0093A998 /* Resources */,
+				CFB51F6D618DA1D91E45FE27 /* [CP] Embed Pods Frameworks */,
+				239380FD7BDB98F2C6C1EF25 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,12 +181,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		239380FD7BDB98F2C6C1EF25 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoMaHomework/Pods-SoMaHomework-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54B2A2A358CB437BC11F147D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CFB51F6D618DA1D91E45FE27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoMaHomework/Pods-SoMaHomework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		98E5036B1FA57BEA0093A998 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				98E503871FA57EA40093A998 /* DetailViewController.swift in Sources */,
+				983541311FA58C9E00CDE32E /* Friend.swift in Sources */,
+				9835412F1FA588BB00CDE32E /* FriendCell.swift in Sources */,
 				98A5FD231FA5840900EC88F1 /* BestFriendsViewController.swift in Sources */,
 				98E503851FA57CF50093A998 /* FriendsViewController.swift in Sources */,
 				98E503731FA57BEA0093A998 /* AppDelegate.swift in Sources */,
@@ -284,12 +375,13 @@
 		};
 		98E503821FA57BEA0093A998 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BBCE94E5913AF119027AD90 /* Pods-SoMaHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z79MDNXYJV;
 				INFOPLIST_FILE = SoMaHomework/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.mikumiku.SoMaHomework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,12 +392,13 @@
 		};
 		98E503831FA57BEA0093A998 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 623F66A9BCD5B9A668F20A6C /* Pods-SoMaHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z79MDNXYJV;
 				INFOPLIST_FILE = SoMaHomework/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.mikumiku.SoMaHomework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
