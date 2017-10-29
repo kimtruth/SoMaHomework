@@ -10,6 +10,7 @@
 		4C1BB56CDA6C0FA17E956B50 /* Pods_SoMaHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C93B9E7B91C63B85D25C86 /* Pods_SoMaHomework.framework */; };
 		9835412F1FA588BB00CDE32E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835412E1FA588BB00CDE32E /* FriendCell.swift */; };
 		983541311FA58C9E00CDE32E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983541301FA58C9E00CDE32E /* Friend.swift */; };
+		988534401FA598DB0077505D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9885343F1FA598DB0077505D /* Global.swift */; };
 		98A5FD211FA5835000EC88F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD201FA5835000EC88F1 /* WebViewController.swift */; };
 		98A5FD231FA5840900EC88F1 /* BestFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */; };
 		98E503731FA57BEA0093A998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E503721FA57BEA0093A998 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		74C93B9E7B91C63B85D25C86 /* Pods_SoMaHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoMaHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9835412E1FA588BB00CDE32E /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		983541301FA58C9E00CDE32E /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		9885343F1FA598DB0077505D /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		98A5FD201FA5835000EC88F1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98A5FD221FA5840900EC88F1 /* BestFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestFriendsViewController.swift; sourceTree = "<group>"; };
 		98E5036F1FA57BEA0093A998 /* SoMaHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoMaHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 				98E503721FA57BEA0093A998 /* AppDelegate.swift */,
 				9835412E1FA588BB00CDE32E /* FriendCell.swift */,
 				983541301FA58C9E00CDE32E /* Friend.swift */,
+				9885343F1FA598DB0077505D /* Global.swift */,
 				9835412D1FA588A300CDE32E /* ViewControllers */,
 				98E503761FA57BEA0093A998 /* Main.storyboard */,
 				98E503791FA57BEA0093A998 /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988534401FA598DB0077505D /* Global.swift in Sources */,
 				98E503871FA57EA40093A998 /* DetailViewController.swift in Sources */,
 				983541311FA58C9E00CDE32E /* Friend.swift in Sources */,
 				9835412F1FA588BB00CDE32E /* FriendCell.swift in Sources */,

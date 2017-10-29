@@ -13,10 +13,12 @@ import SwiftyJSON
 
 class FriendsViewController: UIViewController {
     
+    // MARK:- Properties
+    @IBOutlet weak var tableView: UITableView!
     var friends = [Friend]()
     
-    @IBOutlet weak var tableView: UITableView!
-    
+    // MARK: - Methods
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,16 +27,43 @@ class FriendsViewController: UIViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                 action: #selector(self.startReloadTableContents(_:)),
+                                                 for: .valueChanged)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didReceiveUpdateFriendListNotification(_:)),
+                                               name: didUpdateFriendListNotification,
+                                               object: nil)
+        
+        loadFriends()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: Custom Methods
+    @objc func startReloadTableContents(_ sender: UIRefreshControl) {
+        loadFriends()
+    }
+    
+    // MARK: Receive Notification
+    @objc func didReceiveUpdateFriendListNotification(_ notification: Notification) {
         loadFriends()
     }
     
     func loadFriends() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         let url = "https://randomuser.me/api/?results=20&inc=name,picture,nat,cell,email,id"
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 self.jsonToFriends(json: JSON(value))
                 self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             case .failure(let error):
                 print(error)
             }
@@ -83,6 +112,7 @@ extension FriendsViewController: UITableViewDataSource {
         let friend = friends[indexPath.row]
         
         cell.profileImageView.image = UIImage()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(friend.thumbnailURL).responseData { response in
             switch response.result {
             case .success(let value):
@@ -90,9 +120,10 @@ extension FriendsViewController: UITableViewDataSource {
             case .failure(let error):
                 print(error)
             }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         
-        cell.nameLabel.text = friend.title.localizedUppercase + ". " + friend.firstName + friend.lastName
+        cell.nameLabel.text = friend.title.firstUppercased + ". " + friend.firstName + friend.lastName
         cell.emailLabel.text = friend.email
         
         return cell
