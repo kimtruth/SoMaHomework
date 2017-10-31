@@ -28,29 +28,22 @@ class FriendsViewController: UIViewController {
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self,
-                                                 action: #selector(self.startReloadTableContents(_:)),
+                                                 action: #selector(self.loadFriends),
                                                  for: .valueChanged)
+        
+        self.tableView.register(UINib(nibName: "FriendCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         loadFriends()
     }
     
     // MARK: Custom Methods
-    @objc func startReloadTableContents(_ sender: UIRefreshControl) {
-        loadFriends()
-    }
-    
-    // MARK: Receive Notification
-    @objc func didReceiveUpdateFriendListNotification(_ notification: Notification) {
-        loadFriends()
-    }
-    
-    func loadFriends() {
+    @objc func loadFriends() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let url = "https://randomuser.me/api/?results=20&inc=name,picture,nat,cell,email,id"
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
-                self.jsonToFriends(json: JSON(value))
+                self.setFriends(json: JSON(value))
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -60,7 +53,7 @@ class FriendsViewController: UIViewController {
         }
     }
     
-    func jsonToFriends(json: JSON) {
+    func setFriends(json: JSON) {
         let friendList: Array<JSON> = json["results"].arrayValue
         
         friends = friendList.flatMap {
@@ -92,7 +85,7 @@ class FriendsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let detailVC = segue.destination as! DetailViewController
-            detailVC.friendIndex = indexPath.row
+            detailVC.index = indexPath.row
         }
     }
 }

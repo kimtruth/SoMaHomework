@@ -11,9 +11,13 @@ import WebKit
 
 class WebViewController: UIViewController {
     
+    // MARK:- Properties
     @IBOutlet weak var webView: WKWebView!
     var nation: String!
     
+    
+    // MARK: - Methods
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +25,7 @@ class WebViewController: UIViewController {
         searchGoogle(query: nation)
     }
     
+    // MARK: Custom Methods
     func searchGoogle(query: String) {
         let urlString = "https://www.google.com/search?q=" + query
         let url = URL(string: urlString)!

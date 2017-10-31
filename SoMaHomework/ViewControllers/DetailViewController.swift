@@ -16,14 +16,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    var friendIndex: Int!
-
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
+    var index: Int!
+    var friend: Friend!
+    var showBestFriends = false
+    
     // MARK: - Methods
     // MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let friend = friends[friendIndex]
+        if showBestFriends {
+            self.friend = bestFriends[index]
+        } else {
+            self.friend = friends[index]
+        }
         
         self.title = friend.title.firstUppercased + ". " + friend.lastName.firstUppercased
         self.nameLabel.text = friend.title.firstUppercased + ". " +
@@ -34,10 +41,36 @@ class DetailViewController: UIViewController {
                                 friend.nation 
         self.profileImageView.setImageFromUrlString(url: friend.mediumURL)
         
+        setBarbuttonItem()
+    }
+    
+    func setBarbuttonItem() {
+        if friend.bookmark {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove",
+                                                                     style: .plain,
+                                                                     target: self,
+                                                                     action: #selector(editBookmark))
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                     target: self,
+                                                                     action: #selector(editBookmark))
+        }
+    }
+
+    @objc func editBookmark() {
+        if friend.bookmark {
+            if let index = bestFriends.index(where: {$0.email == friend.email}) {
+                bestFriends.remove(at: index)
+            }
+        }
+        friend.bookmark = !friend.bookmark
+        friends[index] = friend
+        setBarbuttonItem()
+        saveBestFriends()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let webVC = segue.destination as! WebViewController
-        webVC.nation = friends[friendIndex].nation
+        webVC.nation = friends[index].nation
     }
 }
