@@ -9,4 +9,4 @@
 import Foundation
 
 // Global Variables
-let didUpdateFriendListNotification = Notification.Name.init("did update friend list")
+var friends = [Friend]()

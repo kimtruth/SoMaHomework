@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -48,5 +49,21 @@ extension String {
     var firstUppercased: String {
         guard let first = first else { return "" }
         return String(first).uppercased() + dropFirst()
+    }
+}
+
+extension UIImageView {
+    func setImageFromUrlString(url: String) {
+        self.image = UIImage()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Alamofire.request(url).responseData { response in
+            switch response.result {
+            case .success(let value):
+                self.image = UIImage(data: value)
+            case .failure(let error):
+                print(error)
+            }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
     }
 }

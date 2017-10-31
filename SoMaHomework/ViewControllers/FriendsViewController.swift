@@ -15,7 +15,6 @@ class FriendsViewController: UIViewController {
     
     // MARK:- Properties
     @IBOutlet weak var tableView: UITableView!
-    var friends = [Friend]()
     
     // MARK: - Methods
     // MARK: Life Cycle
@@ -31,17 +30,8 @@ class FriendsViewController: UIViewController {
         self.tableView.refreshControl?.addTarget(self,
                                                  action: #selector(self.startReloadTableContents(_:)),
                                                  for: .valueChanged)
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(self.didReceiveUpdateFriendListNotification(_:)),
-//                                               name: didUpdateFriendListNotification,
-//                                               object: nil)
-        
         loadFriends()
     }
-//
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
     
     // MARK: Custom Methods
     @objc func startReloadTableContents(_ sender: UIRefreshControl) {
@@ -73,7 +63,7 @@ class FriendsViewController: UIViewController {
     func jsonToFriends(json: JSON) {
         let friendList: Array<JSON> = json["results"].arrayValue
         
-        self.friends = friendList.flatMap {
+        friends = friendList.flatMap {
             if let title = $0["name"]["title"].string,
                 let firstName = $0["name"]["first"].string,
                 let lastName = $0["name"]["last"].string,
@@ -91,11 +81,19 @@ class FriendsViewController: UIViewController {
                               thumbnailURL: thumbnailURL,
                               mediumURL: mediumURL,
                               largeURL: largeURL,
-                              nation: nation)
+                              nation: nation,
+                              bookmark: false)
             }
             return nil
         }
         print(friendList)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.friendIndex = indexPath.row
+        }
     }
 }
 
@@ -111,18 +109,7 @@ extension FriendsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         let friend = friends[indexPath.row]
         
-        cell.profileImageView.image = UIImage()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        Alamofire.request(friend.thumbnailURL).responseData { response in
-            switch response.result {
-            case .success(let value):
-                cell.profileImageView.image = UIImage(data: value)
-            case .failure(let error):
-                print(error)
-            }
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
-        
+        cell.profileImageView.setImageFromUrlString(url: friend.thumbnailURL)
         cell.nameLabel.text = friend.title.firstUppercased + ". " +
                                 friend.firstName.firstUppercased + " " +
                                 friend.lastName.firstUppercased
@@ -136,6 +123,10 @@ extension FriendsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FriendsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "FriendsToDetail", sender: self)
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70

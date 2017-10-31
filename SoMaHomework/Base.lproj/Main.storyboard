@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -92,7 +91,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-CG-Ocd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-CG-Ocd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -238,6 +237,11 @@ US</string>
                     <navigationItem key="navigationItem" title="name" id="buh-ds-pVZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="z2d-OE-6Sy"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailLabel" destination="YV8-na-pC2" id="c2P-Yt-TFK"/>
+                        <outlet property="nameLabel" destination="rhF-hV-u8v" id="oD8-Z2-fuy"/>
+                        <outlet property="profileImageView" destination="sas-5y-7jr" id="e3m-dO-9Pf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08w-18-Btt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,15 +267,35 @@ US</string>
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9Az-HW-pMC"/>
-                                    <barButtonItem systemItem="rewind" id="dQS-A1-hrt"/>
+                                    <barButtonItem systemItem="rewind" id="dQS-A1-hrt">
+                                        <connections>
+                                            <action selector="backButtonDidTap:" destination="vSH-0o-Ehu" id="RHe-pE-3Q9"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ucQ-mI-1Gv"/>
-                                    <barButtonItem systemItem="stop" id="NKK-ih-D06"/>
+                                    <barButtonItem systemItem="stop" id="NKK-ih-D06">
+                                        <connections>
+                                            <action selector="stopButtonDidTap:" destination="vSH-0o-Ehu" id="a2d-mr-tRe"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fjF-2O-69o"/>
-                                    <barButtonItem systemItem="refresh" id="z7A-VQ-TO4"/>
+                                    <barButtonItem systemItem="refresh" id="z7A-VQ-TO4">
+                                        <connections>
+                                            <action selector="refreshButtonDidTap:" destination="vSH-0o-Ehu" id="fBN-7d-F7t"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="efw-wD-FeC"/>
-                                    <barButtonItem systemItem="fastForward" id="5Q9-Do-Otm"/>
+                                    <barButtonItem systemItem="fastForward" id="5Q9-Do-Otm">
+                                        <connections>
+                                            <action selector="forwardButtonDidTap:" destination="vSH-0o-Ehu" id="c7i-Uu-fKW"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1Qi-Yp-8fX"/>
-                                    <barButtonItem title="Close" id="JYl-pt-3OX"/>
+                                    <barButtonItem title="Close" id="JYl-pt-3OX">
+                                        <connections>
+                                            <action selector="closeButtonDidTap:" destination="vSH-0o-Ehu" id="cIa-B8-JLo"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uC9-Nq-sxO"/>
                                 </items>
                             </toolbar>
@@ -288,6 +312,9 @@ US</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WOc-OF-cmS"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="GmO-Hj-CIb" id="mp8-cz-XWC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWL-jE-mom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,4 +18,5 @@ struct Friend {
     var mediumURL: String
     var largeURL: String
     var nation: String
+    var bookmark: Bool
 }
