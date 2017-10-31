@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ug-MI-ENo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ug-MI-ENo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -55,7 +55,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="abU-Ca-xR3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Best Friends" id="nms-4V-klG"/>
+                    <navigationItem key="navigationItem" title="Best Friends" id="nms-4V-klG">
+                        <barButtonItem key="rightBarButtonItem" title="EDIT" id="Rch-rd-qPX">
+                            <connections>
+                                <action selector="barButtonItemDidTap:" destination="rlp-JI-kLP" id="KXe-SH-IJR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2Ug-MI-ENo" id="qFv-8d-EVM"/>
                         <segue destination="1Hv-uA-kKg" kind="show" identifier="BestFriendsToDetail" id="c1k-h2-Y1L"/>
@@ -361,6 +367,6 @@ US</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iUS-CG-e1q"/>
+        <segue reference="c1k-h2-Y1L"/>
     </inferredMetricsTieBreakers>
 </document>

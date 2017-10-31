@@ -22,13 +22,24 @@ class BestFriendsViewController: UIViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        
         self.tableView.register(UINib(nibName: "FriendCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadBestFriends()
         self.tableView.reloadData()
+    }
+    
+    // MARK: Custom Methods
+    @IBAction func barButtonItemDidTap(_ sender: UIBarButtonItem) {
+        
+        self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+        
+        if self.tableView.isEditing {
+            sender.title = "DONE"
+        } else {
+            sender.title = "EDIT"
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,6 +72,28 @@ extension BestFriendsViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCellEditingStyle, 
+                   forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            bestFriends.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            saveBestFriends()
+        default:
+            return
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let friend = bestFriends.remove(at: sourceIndexPath.row)
+        bestFriends.insert(friend, at: destinationIndexPath.row)
+        saveBestFriends()
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -74,4 +107,5 @@ extension BestFriendsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
 }

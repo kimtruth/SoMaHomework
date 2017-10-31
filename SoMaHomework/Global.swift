@@ -12,7 +12,6 @@ import Foundation
 var friends = [Friend]()
 var bestFriends: [Friend] = []
 
-
 // Global Function
 func loadBestFriends() {
     do {
@@ -31,7 +30,7 @@ func saveBestFriends() {
     let encoder = PropertyListEncoder()
     
     do {
-        let best = friends.filter { $0.bookmark == true }
+        let best = bestFriends + friends.filter { $0.bookmark == true }
         let data = try encoder.encode(best)
         try data.write(to: Friend.friendDataURL())
     } catch {
