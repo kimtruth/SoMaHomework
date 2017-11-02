@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Alamofire
-
 class DetailViewController: UIViewController {
     
     // MARK:- Properties
@@ -34,16 +32,17 @@ class DetailViewController: UIViewController {
         
         self.title = friend.title.firstUppercased + ". " + friend.lastName.firstUppercased
         self.nameLabel.text = friend.title.firstUppercased + ". " +
-                              friend.firstName.firstUppercased + " " +
-                              friend.lastName.firstUppercased
+            friend.firstName.firstUppercased + " " +
+            friend.lastName.firstUppercased
         self.detailLabel.text = friend.email + "\n" +
-                                friend.phone + "\n" +
-                                friend.nation 
-        self.profileImageView.setImageFromUrlString(url: friend.mediumURL)
+            friend.phone + "\n" +
+            friend.nation
+        self.profileImageView.setImageFromUrlString(urlString: friend.mediumURL)
         
         setBarbuttonItem()
     }
     
+    // MARK: Custom Methods
     func setBarbuttonItem() {
         if friend.bookmark {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove",
@@ -56,7 +55,7 @@ class DetailViewController: UIViewController {
                                                                      action: #selector(editBookmark))
         }
     }
-
+    
     @objc func editBookmark() {
         if friend.bookmark {
             if let index = bestFriends.index(where: {$0.email == friend.email}) {
@@ -74,3 +73,4 @@ class DetailViewController: UIViewController {
         webVC.nation = friends[index].nation
     }
 }
+

@@ -9,7 +9,7 @@
 import UIKit
 
 class BestFriendsViewController: UIViewController {
-
+    
     // MARK:- Properties
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,7 +17,7 @@ class BestFriendsViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
@@ -63,7 +63,7 @@ extension BestFriendsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         let friend = bestFriends[indexPath.row]
         
-        cell.profileImageView.setImageFromUrlString(url: friend.thumbnailURL)
+        cell.profileImageView.setImageFromUrlString(urlString: friend.thumbnailURL)
         cell.nameLabel.text = friend.title.firstUppercased + ". " +
             friend.firstName.firstUppercased + " " +
             friend.lastName.firstUppercased
@@ -73,7 +73,7 @@ extension BestFriendsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCellEditingStyle, 
+                   commit editingStyle: UITableViewCellEditingStyle,
                    forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:

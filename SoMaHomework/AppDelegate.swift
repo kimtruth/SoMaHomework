@@ -8,7 +8,6 @@
 
 import UIKit
 
-import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -53,17 +52,18 @@ extension String {
 }
 
 extension UIImageView {
-    func setImageFromUrlString(url: String) {
+    func setImageFromUrlString(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        
         self.image = UIImage()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        Alamofire.request(url).responseData { response in
-            switch response.result {
-            case .success(let value):
-                self.image = UIImage(data: value)
-            case .failure(let error):
-                print(error)
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.image = image
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
+        }.resume()
     }
 }

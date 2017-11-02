@@ -8,9 +8,6 @@
 
 import UIKit
 
-import Alamofire
-import SwiftyJSON
-
 class FriendsViewController: UIViewController {
     
     // MARK:- Properties
@@ -37,35 +34,42 @@ class FriendsViewController: UIViewController {
     
     // MARK: Custom Methods
     @objc func loadFriends() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let urlString = "https://randomuser.me/api/?results=20&inc=name,picture,nat,cell,email,id"
+        guard let url = URL(string: urlString) else { return }
         
-        let url = "https://randomuser.me/api/?results=20&inc=name,picture,nat,cell,email,id"
-        Alamofire.request(url).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                self.setFriends(json: JSON(value))
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            case .failure(let error):
-                print(error)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                guard let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.setFriends(json: json)
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }
-        }
+        }.resume()
     }
     
-    func setFriends(json: JSON) {
-        let friendList: Array<JSON> = json["results"].arrayValue
+    func setFriends(json: [String: Any]) {
+        
+        guard let friendList = json["results"] as? [[String: Any]] else { return }
+        print(friendList)
         
         friends = friendList.flatMap {
-            if let title = $0["name"]["title"].string,
-                let firstName = $0["name"]["first"].string,
-                let lastName = $0["name"]["last"].string,
-                let email = $0["email"].string,
-                let phone = $0["cell"].string,
-                let thumbnailURL = $0["picture"]["thumbnail"].string,
-                let mediumURL = $0["picture"]["medium"].string,
-                let largeURL = $0["picture"]["large"].string,
-                let nation = $0["nat"].string {
+            if let name = $0["name"] as? [String: String],
+                let title = name["title"],
+                let firstName = name["first"],
+                let lastName = name["last"],
+                let email = $0["email"] as? String,
+                let phone = $0["cell"] as? String,
+                let picture = $0["picture"] as? [String: String],
+                let thumbnailURL = picture["thumbnail"],
+                let mediumURL = picture["medium"],
+                let largeURL = picture["large"],
+                let nation = $0["nat"]as? String {
                 return Friend(title: title,
                               firstName: firstName,
                               lastName: lastName,
@@ -79,7 +83,6 @@ class FriendsViewController: UIViewController {
             }
             return nil
         }
-        print(friendList)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +105,7 @@ extension FriendsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         let friend = friends[indexPath.row]
         
-        cell.profileImageView.setImageFromUrlString(url: friend.thumbnailURL)
+        cell.profileImageView.setImageFromUrlString(urlString: friend.thumbnailURL)
         cell.nameLabel.text = friend.title.firstUppercased + ". " +
                                 friend.firstName.firstUppercased + " " +
                                 friend.lastName.firstUppercased
